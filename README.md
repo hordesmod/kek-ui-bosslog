@@ -4,6 +4,10 @@ Automated worker that scrapes boss logs and maintains a player statistics API.
 
 <!-- LOGS_START -->
 ```text
+[2026-03-17 18:24:50 UTC] Sync finished.
+[2026-03-17 18:24:50 UTC] Saving 19 modified players...
+[2026-03-17 18:24:50 UTC] Update globals.
+[2026-03-17 18:24:40 UTC] Resuming from ID: 59461.
 [2026-03-17 18:17:31 UTC] Sync finished.
 [2026-03-17 18:17:31 UTC] Saving 19 modified players...
 [2026-03-17 18:17:31 UTC] Update globals.
@@ -15,9 +19,5 @@ Automated worker that scrapes boss logs and maintains a player statistics API.
 [2026-03-17 16:33:07 UTC] Sync finished.
 [2026-03-17 16:33:07 UTC] Saving 38 modified players...
 [2026-03-17 16:33:07 UTC] Update globals.
-[2026-03-17 16:32:57 UTC] ID: 59460.
-[2026-03-17 16:32:56 UTC] Resuming from ID: 59457...
-[2026-03-17 16:32:45 UTC] Extracting seed database...
-[2026-03-17 16:17:01 UTC] Sync finished.
 ```
 <!-- LOGS_END -->

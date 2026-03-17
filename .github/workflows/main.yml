@@ -1,0 +1,54 @@
+name: main
+on:
+  schedule:
+    - cron: '0 * * * *' # Hourly sync
+  workflow_dispatch:      # Manual trigger
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6 
+
+      - name: Restore SQLite Database
+        id: cache-db-restore
+        uses: actions/cache/restore@v4
+        with:
+          path: cache/data.sqlite
+          key: sqlite-v6-${{ github.run_id }}
+          restore-keys: |
+            sqlite-v6-
+
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v6 # Latest v6
+        with:
+          python-version: '3.13'
+
+      - name: Install Dependencies
+        run: pip install requests
+
+      - name: Execute Scraper
+        run: python main.py
+      
+      - name: Save Updated SQLite
+        id: cache-db-save
+        uses: actions/cache/save@v4
+        if: always() # Ensure DB is saved even if push fails
+        with:
+          path: cache/data.sqlite
+          # We save under the new unique key generated for this run
+          key: ${{ steps.cache-db-restore.outputs.cache-primary-key }}
+
+      - name: Commit and Push
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/ README.md
+          if ! git diff --cached --quiet; then
+            git commit -m "v6 sync: automated update [skip ci]"
+            git push
+          fi

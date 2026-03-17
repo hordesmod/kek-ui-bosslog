@@ -51,6 +51,6 @@ jobs:
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git add data/ README.md
         if ! git diff --cached --quiet; then
-          git commit -m "v6 sync [skip ci]"
+          git commit -m "$(date +'%Y-%m-%d %H:%M') sync [skip ci]"
           git push
         fi

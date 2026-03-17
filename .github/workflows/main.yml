@@ -1,4 +1,4 @@
-name: Hordes Tracker v6
+name: Hordes Tracker v5
 on:
   schedule:
     - cron: '0 * * * *'
@@ -19,7 +19,7 @@ jobs:
 
     - name: Restore SQLite Database
       id: cache-db-restore
-      uses: actions/cache/restore@v6 # Latest Node 24 compatible
+      uses: actions/cache/restore@v5 # Latest Node 24 compatible
       with:
         path: cache/data.sqlite
         key: sqlite-v6-${{ github.run_id }}
@@ -39,7 +39,7 @@ jobs:
 
     - name: Save Updated SQLite
       id: cache-db-save
-      uses: actions/cache/save@v6 # Latest Node 24 compatible
+      uses: actions/cache/save@v5 # Latest Node 24 compatible
       if: always()
       with:
         path: cache/data.sqlite

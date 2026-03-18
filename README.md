@@ -40,6 +40,10 @@ This project is released under the [CC BY 4.0 License](https://creativecommons.o
 
 <!-- LOGS_START -->
 ```text
+[2026-03-18 21:40:09 UTC] Sync finished.
+[2026-03-18 21:40:09 UTC] Saving 27 modified players...
+[2026-03-18 21:40:09 UTC] Update globals.
+[2026-03-18 21:39:59 UTC] Resuming from ID: 59503.
 [2026-03-18 20:45:46 UTC] Sync finished.
 [2026-03-18 20:45:45 UTC] Saving 57 modified players...
 [2026-03-18 20:45:45 UTC] Update globals.
@@ -51,9 +55,5 @@ This project is released under the [CC BY 4.0 License](https://creativecommons.o
 [2026-03-18 19:10:44 UTC] Resuming from ID: 59497...
 [2026-03-18 17:08:56 UTC] Sync finished.
 [2026-03-18 17:08:55 UTC] Saving 59 modified players...
-[2026-03-18 17:08:55 UTC] Update globals.
-[2026-03-18 17:08:46 UTC] ID: 59495..
-[2026-03-18 17:08:45 UTC] Resuming from ID: 59492...
-[2026-03-18 15:10:00 UTC] Sync finished.
 ```
 <!-- LOGS_END -->

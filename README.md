@@ -1,6 +1,7 @@
 # Dataset Overview & Historical Archive
 
-This repository serves as a long-term historical archive of game meta-trends. Data is captured in daily snapshots to preserve the history of the game's evolution over years. Like a library or a web archive, these records are intended to be immutable to maintain the integrity of the historical timeline.
+This repository serves as a long-term historical archive of game meta-trends. Data is captured in daily snapshots to preserve the history of the game's evolution over years.
+Like a library or a web archive, these records are intended to be immutable to maintain the integrity of the historical timeline.
 
 Requests for data removal are only evaluated for current active datasets. Historical snapshots (past Git commits) are preserved as-is to ensure the accuracy of year-over-year charts and cannot be modified without compromising the entire study's validity.
 
@@ -19,7 +20,9 @@ The dataset is intended solely for aggregate gameplay analytics, comparative cha
 
 ## Opt-Out / Anonymization
 
-Players may request that a character be anonymized in future dataset updates by specifying the public character name. Anonymization is applied only to characters whose deletion or opt-out has been confirmed. This includes references to those characters in global statistics (top DPS/HPS, etc.) and day-level logs within the dataset to prevent identification. Active characters not confirmed for deletion or opt-out remain unchanged. Previously published snapshots may remain accessible in repository history. Aggregate statistics remain available for gameplay analytics.
+Characters that are deleted in-game are automatically anonymized in future dataset snapshots. Their names are replaced with unique player IDs in all parsed leaderboards and boss logs, ensuring they cannot be identified.
+Active characters remain unchanged. Previously published snapshots remain accessible for historical analytics, with aggregate statistics still available for gameplay analysis.
+No action is required by the player — deletion in-game is sufficient for automatic anonymization.
 
 ---
 

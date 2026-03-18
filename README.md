@@ -1,6 +1,27 @@
-# Hordes.io PvE Tracker
-Automated worker that scrapes boss logs and maintains a player statistics API.
+# Dataset Overview & Historical Archive
 
+This repository serves as a long-term historical archive of game meta-trends. Data is captured in daily snapshots to preserve the history of the game's evolution over years. Like a library or a web archive, these records are intended to be immutable to maintain the integrity of the historical timeline.
+
+Requests for data removal are only evaluated for current active datasets. Historical snapshots (past Git commits) are preserved as-is to ensure the accuracy of year-over-year charts and cannot be modified without compromising the entire study's validity.
+
+---
+
+## Player Data Transparency
+
+This dataset contains only publicly visible in-game character statistics, names, and day-level raid participation data.
+
+* No real-world personal information is collected; the dataset cannot be used to identify real-world players.
+* Character files are stored per-character for dataset indexing and consistency. Publicly visible in-game character names are included in dataset entries where needed for global statistics and gameplay analytics. Day-level raid logs reference character identifiers for analytics purposes.
+
+The dataset is intended solely for aggregate gameplay analytics, comparative character statistics, day-level raid participation visibility, and historical analysis of in-game activity within the game community. It is **not intended for player profiling, identity inference, or decision-making about real individuals**.
+
+---
+
+## Opt-Out / Anonymization
+
+Players may request that a character be anonymized in future dataset updates by specifying the public character name. Anonymization is applied only to characters whose deletion or opt-out has been confirmed. This includes references to those characters in global statistics (top DPS/HPS, etc.) and day-level logs within the dataset to prevent identification. Active characters not confirmed for deletion or opt-out remain unchanged. Previously published snapshots may remain accessible in repository history. Aggregate statistics remain available for gameplay analytics.
+
+---
 
 <!-- LOGS_START -->
 ```text

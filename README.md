@@ -1,40 +1,30 @@
-# Dataset Overview & Historical Archive
+# Legal, Privacy & Data Handling
 
-This repository serves as a long-term historical archive of game meta-trends. Data is captured in daily snapshots to preserve the history of the game's evolution over years.
-Like a library or a web archive, these records are intended to be immutable to maintain the integrity of the historical timeline.
+This project is an independent, open-source historical mirror of public in-game events from **hordes.io**.  
 
-Requests for data removal are only evaluated for current active datasets. Historical snapshots (past Git commits) are preserved as-is to ensure the accuracy of year-over-year charts and cannot be modified without compromising the entire study's validity.
+## 1. Data Classification (Public Event Logs)
+This database records **Public World Events** (e.g., Boss Kills) that are broadcast by the game via public tables.  
 
----
+- **Pseudonymization:** Historical event data is stored using pseudonymized character labels as provided by the public game state. We do not collect Google Auth IDs, emails, IP addresses, or other personally identifiable information.  
+- **No Connection:** This system is entirely decoupled from the official **hordes.io** authentication systems (e.g., Google Auth).
 
-## Player Data Transparency
+## 2. GDPR Compliance & the “Identification” Shield (Art. 11)
+Under GDPR Article 11, maintainers cannot identify the natural person behind any character name.  
 
-This dataset contains only publicly visible in-game character statistics, names, and day-level raid participation data.
+- **Verification Limitations:** We cannot verify ownership of character names because we have no access to the game’s private database. Requests to modify or erase event data are therefore processed in accordance with GDPR guidance, noting that identification of the requester is impossible. Deleting data based on an unverified request would risk a security breach against the actual owner of that character's history. To verify an erasure request, we would require the user to provide official Hordes.io account credentials or PII. In accordance with the principle of Data Minimization, we refuse to collect such sensitive data, rendering verification—and thus erasure—legally impossible under Art. 12(2).
+- **Automated Anonymization:** If a player deletes their character in-game, the corresponding entry in our dataset eventually reverts to a numeric `game_id`. This ensures compliance with the “Right to Erasure” through anonymization while preserving historical records.
 
-* No real-world personal information is collected; the dataset cannot be used to identify real-world players.
-* Character files are stored per-character for dataset indexing and consistency. Publicly visible in-game character names are included in dataset entries where needed for global statistics and gameplay analytics. Day-level raid logs reference character identifiers for analytics purposes.
+## 3. Historical Integrity (Art. 89)
+This archive serves **statistical and historical purposes** for the gaming community. To preserve the chronological integrity of Top Lists and Boss Logs, historical snapshots are maintained “as-is” under GDPR Article 89. Retroactive editing of static logs is not supported, except for anonymization when a character is deleted in-game.  
 
-The dataset is intended solely for aggregate gameplay analytics, comparative character statistics, day-level raid participation visibility, and historical analysis of in-game activity within the game community. It is **not intended for player profiling, identity inference, or decision-making about real individuals**.
+## 4. Non-Affiliation & Takedown
+- **Ownership:** This project is not affiliated with, endorsed by, or mirrored from **dekdev**. All game-related terminology, assets, and character stats remain the property of the Rights Holder.  
+- **Scraping Ethics:** Data is collected responsibly at low frequency to avoid impacting official game infrastructure. Requests to cease scraping or remove data from this project will be respected via formal GitHub Issues.  
 
----
-
-## Opt-Out / Anonymization
-
-Characters that are deleted in-game are automatically anonymized in future dataset snapshots. Their names are replaced with unique player IDs in all parsed leaderboards and boss logs, ensuring they cannot be identified.
-Active characters remain unchanged. Previously published snapshots remain accessible for historical analytics, with aggregate statistics still available for gameplay analysis.
-No action is required by the player — deletion in-game is sufficient for automatic anonymization.
-
----
-
-## Project Purpose
-
-This project is intended solely for community research, historical analysis, and gameplay analytics. It is non-commercial and does not generate revenue.
-
----
-
-## License
-
-This project is released under the [CC BY 4.0 License](https://creativecommons.org/licenses/by/4.0/). You are free to use, share, and adapt the dataset for non-commercial and research purposes, with proper attribution.
+## 5. Data Architecture & Privacy
+- **Public Logs:** Historical event data is stored in pseudonymized, hashed JSON files.  
+- **Private Processing:** Character metadata is handled in a private processing cache and is not committed to the public repository.  
+- **License:** The software is licensed under MIT, and the resulting dataset is licensed under **CC BY-NC-SA 4.0**.
 
 ---
 

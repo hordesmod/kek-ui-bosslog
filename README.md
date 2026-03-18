@@ -23,6 +23,18 @@ Players may request that a character be anonymized in future dataset updates by 
 
 ---
 
+## Project Purpose
+
+This project is intended solely for community research, historical analysis, and gameplay analytics. It is non-commercial and does not generate revenue.
+
+---
+
+## License
+
+This project is released under the [CC BY 4.0 License](https://creativecommons.org/licenses/by/4.0/). You are free to use, share, and adapt the dataset for non-commercial and research purposes, with proper attribution.
+
+---
+
 <!-- LOGS_START -->
 ```text
 [2026-03-18 13:25:20 UTC] Sync finished.

@@ -5,7 +5,8 @@
 
 An independent, non-commercial archive of **public Hordes.io gameplay events** for research and historical reference.
 
-- **Privacy:** Only public events are recorded. No emails, IPs, or login info are collected.  
+- **Privacy:** Only public events are recorded. No emails, IPs, or login info are collected.
+- **Opt-Out (Staff Mandated)**: Users may request character exclusion via GitHub Issues. Note: To prevent fraudulent tampering, requests require official verification from the game provider. Unverified requests will be denied to protect the privacy of the legitimate character owner.
 - **Automated Erasure:** Deleted characters in-game are automatically anonymized in the archive.  
 - **Data Integrity:** Unverified manual deletion requests are not accepted to protect the integrity of historical data and the privacy of character owners.  
 - **IP Disclaimer:** No game assets, icons, sprites, or other copyrighted material are hosted. All game terminology remains the property of their respective owners.

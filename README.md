@@ -8,8 +8,8 @@ An independent, non-commercial archive of **public Hordes.io gameplay events** f
 - **Privacy:** Only public events are recorded. No emails, IPs, or login info are collected.  
 - **Automated Erasure:** Deleted characters in-game are automatically anonymized in the archive.  
 - **Data Integrity:** Unverified manual deletion requests are not accepted to protect the integrity of historical data and the privacy of character owners.  
-- **IP Disclaimer:** No copyrighted assets are hosted. All game assets and terminology remain the property of @shatterspine.
-
+- **IP Disclaimer:** No game assets, icons, sprites, or other copyrighted material are hosted. All game terminology remains the property of their respective owners.
+  
 Fully automated and designed to preserve historical statistics while respecting the Right to be Forgotten through the source game.
 
 ---

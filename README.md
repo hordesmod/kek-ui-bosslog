@@ -33,3 +33,5 @@ Fully automated and designed to preserve historical statistics while respecting 
 [2026-03-20 19:41:21 UTC] Saving 65 modified players...
 ```
 <!-- LOGS_END -->
+---
+> "The rules don't matter — only the data and the chaos do."

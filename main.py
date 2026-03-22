@@ -129,15 +129,15 @@ def save_json(data, filename):
 
 def get_top(cursor, param, is_true=False):
     where = "WHERE duration > 60" if is_true else ""
+    tox = "CASE WHEN MAX(time) >= date('now', '-14 days') THEN 1 ELSE 0 END AS tox"
     if param in ("kills", "deaths"):
-        cols = "p.faction, p.class, p.name, t.v, t.d, t.a"
+        cols = "p.faction, p.class, p.name, t.v, t.d, t.a, t.tox"
         agg = "COUNT(*)" if param == "kills" else "SUM(deaths)"
-        stats_sql = f"{agg} AS v, SUM(duration) AS d, SUM(active) AS a"
+        stats_sql = f"{agg} AS v, SUM(duration) AS d, SUM(active) AS a, {tox}"
     elif param == "damage":
-        cols, stats_sql = "p.faction, p.class, p.name, t.v, t.a, t.b, t.killid", "MAX((mind + maxd) / 2) AS v, mind AS a, maxd AS b, killid"
+        cols, stats_sql = "p.faction, p.class, p.name, t.v, t.a, t.b, t.killid, t.tox", f"MAX((mind + maxd) / 2) AS v, mind AS a, maxd AS b, killid, {tox}"
     else:
-        cols, stats_sql = "p.faction, p.class, p.name, t.v, t.killid", f"MAX({param}) AS v, killid"
-
+        cols, stats_sql = "p.faction, p.class, p.name, t.v, t.killid, t.tox", f"MAX({param}) AS v, killid, {tox}"
     query = f"SELECT {cols} FROM (SELECT playerid, {stats_sql} FROM log {where} GROUP BY playerid ORDER BY v DESC LIMIT {DATA_LIMIT}) AS t JOIN player p ON p.playerid = t.playerid ORDER BY t.v DESC"
     return cursor.execute(query).fetchall()
 

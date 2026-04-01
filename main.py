@@ -142,20 +142,42 @@ def save_json(data, filename):
 #     return cursor.execute(query).fetchall()
 
 def get_top(cursor, param, is_true=False):
-    where_clause = "WHERE duration > 60" if is_true else ""
+    where = "WHERE duration > 60" if is_true else ""
+    tox = "MAX(time) >= date('now', '-14 days') AS tox"
+    
     if param in ("kills", "deaths"):
-        agg = "COUNT(*)" if param == "kills" else "SUM(deaths)"
         cols = "p.faction, p.class, p.name, t.v, t.d, t.a, t.tox"
-        stats_sql = f"SELECT playerid, {agg} AS v, SUM(duration) AS d, SUM(active) AS a, CASE WHEN MAX(time) >= date('now', '-14 days') THEN 1 ELSE 0 END AS tox FROM log {where_clause} GROUP BY playerid"
+        agg = "COUNT(*)" if param == "kills" else "SUM(deaths)"
+        stats_sql = f"{agg} AS v, SUM(duration) AS d, SUM(active) AS a, {tox}"
+    
+    elif param == "damage":
+        val_expr = "((mind + maxd) / 2)"
+        cols = "p.faction, p.class, p.name, t.v, t.a, t.b, t.killid, t.tox"
+        stats_sql = f"""
+            MAX({val_expr}) AS v, 
+            MAX(printf('%015d', {val_expr}) || mind) AS a, 
+            MAX(printf('%015d', {val_expr}) || maxd) AS b, 
+            MAX(printf('%015d', {val_expr}) || killid) AS killid_packed,
+            {tox}
+        """
     else:
-        val_expr = "((mind + maxd) / 2)" if param == "damage" else param
-        extra_cols = "mind AS a, maxd AS b," if param == "damage" else ""
-        cols = f"p.faction, p.class, p.name, t.v, { 't.a, t.b, ' if param == 'damage' else '' }t.killid, t.tox"
-        stats_sql = f"""SELECT * FROM (
-                SELECT playerid, {val_expr} AS v, {extra_cols} killid, CASE WHEN time >= date('now', '-14 days') THEN 1 ELSE 0 END AS tox, ROW_NUMBER() OVER (PARTITION BY playerid ORDER BY {val_expr} DESC) as rn
-                FROM log {where_clause} ) WHERE rn = 1"""
-    query = f"SELECT {cols} FROM ({stats_sql} ORDER BY v DESC LIMIT {DATA_LIMIT}) AS t JOIN player p ON p.playerid = t.playerid ORDER BY t.v DESC"
+        cols = "p.faction, p.class, p.name, t.v, t.killid, t.tox"
+        stats_sql = f"MAX({param}) AS v, MAX(printf('%015d', {param}) || killid) AS killid_packed, {tox}"
+
+    final_cols = cols.replace("t.killid", "CAST(SUBSTR(t.killid_packed, 16) AS INTEGER) AS killid")
+    if param == "damage":
+        final_cols = final_cols.replace("t.a", "CAST(SUBSTR(t.a, 16) AS INTEGER) AS a")
+        final_cols = final_cols.replace("t.b", "CAST(SUBSTR(t.b, 16) AS INTEGER) AS b")
+
+    query = f"""
+        SELECT {final_cols} 
+        FROM (SELECT playerid, {stats_sql} FROM log {where} GROUP BY playerid ORDER BY v DESC LIMIT {DATA_LIMIT}) AS t 
+        JOIN player p ON p.playerid = t.playerid 
+        ORDER BY t.v DESC
+    """
+    
     return cursor.execute(query).fetchall()
+
     
 def get_population(cursor):
     query = '''SELECT strftime('%Y%m%d', l.time) AS day,

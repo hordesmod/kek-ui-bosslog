@@ -17,6 +17,10 @@ Fully automated and designed to preserve historical statistics while providing a
 
 <!-- LOGS_START -->
 ```text
+[2026-05-05 11:19:31 UTC] Sync finished.
+[2026-05-05 11:19:31 UTC] Saving 21 modified players...
+[2026-05-05 11:19:31 UTC] Update globals.
+[2026-05-05 11:19:05 UTC] Resuming from ID: 61206..
 [2026-05-05 09:10:37 UTC] Sync finished.
 [2026-05-05 09:10:37 UTC] Saving 26 modified players...
 [2026-05-05 09:10:37 UTC] Update globals.
@@ -28,10 +32,6 @@ Fully automated and designed to preserve historical statistics while providing a
 [2026-05-05 06:22:24 UTC] Resuming from ID: 61201....
 [2026-05-05 03:42:47 UTC] Sync finished.
 [2026-05-05 03:42:47 UTC] Saving 56 modified players...
-[2026-05-05 03:42:47 UTC] Update globals.
-[2026-05-05 03:42:21 UTC] ID: 61200.
-[2026-05-05 03:42:20 UTC] ID: 61195....
-[2026-05-05 03:42:19 UTC] Resuming from ID: 61192...
 ```
 <!-- LOGS_END -->
 ---
